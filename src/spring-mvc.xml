@@ -9,6 +9,8 @@
                         http://www.springframework.org/schema/context/spring-context-3.1.xsd    
                         http://www.springframework.org/schema/mvc    
                         http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+
+
 	<!-- 自动扫描该包，使SpringMVC认为包下用了@controller注解的类是控制器 -->
 	<context:component-scan base-package="com.smh">
 		<context:include-filter type="annotation"
@@ -34,6 +36,16 @@
 			</list>
 		</property>
 	</bean>
+
+	<!-- 定义静态资源，不拦截 -->
+	<mvc:resources location="/js/" mapping="/js/**" />
+	<mvc:resources location="/images/" mapping="/images/**" />
+	<mvc:resources location="/fonts/" mapping="/fonts/**" />
+	<mvc:resources location="/user_icon/" mapping="/user_icon/**" />
+	<mvc:resources location="/css/" mapping="/css/**" />
+	<mvc:annotation-driven />
+
+
 	<!-- 定义跳转的文件的前后缀 ，视图模式配置 -->
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -41,6 +53,7 @@
 		<property name="prefix" value="/WEB-INF/jsp/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
+
 
 	<!-- 配置文件上传，如果没有使用文件上传可以不用配置，当然如果不配，那么配置文件中也不必引入上传组件包 -->
 	<bean id="multipartResolver"
@@ -52,5 +65,11 @@
 		<!-- 内存中的最大值 -->
 		<property name="maxInMemorySize" value="40960" />
 	</bean>
+
+	<!-- 项目地址根目录名称 -->
+	<beans>
+		<context:property-placeholder location="classpath:config.properties" />
+	</beans>
+
 
 </beans> 

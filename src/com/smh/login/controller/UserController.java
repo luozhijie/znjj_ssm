@@ -16,6 +16,6 @@ public class UserController {
 
 	@RequestMapping("/doLogin.view")
 	public String doLogin(HttpServletRequest requset) {
-		return "showUser";
+		return "login/login";
 	}
 }
