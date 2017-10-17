@@ -10,7 +10,7 @@ import com.smh.login.service.UserService;
 
 @Controller
 @RequestMapping("/login")
-public class UserController {
+public class LoginController {
 	@Resource
 	private UserService userService;
 
